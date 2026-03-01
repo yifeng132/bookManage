@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.bookmanager.mapper.BookMapper">
+
+    <select id="selectAll" resultType="Book">
+        select id, book_name, author, price, create_time
+        from book
+        order by create_time desc
+    </select>
+
+    <insert id="insert">
+        insert into book(book_name, author, price)
+        values(#{bookName}, #{author}, #{price})
+    </insert>
+
+    <update id="updateById">
+        update book
+        set book_name = #{bookName},
+            author = #{author},
+            price = #{price}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from book where id = #{id}
+    </delete>
+
+    <select id="selectById" resultType="Book">
+        select id, book_name, author, price, create_time
+        from book
+        where id = #{id}
+    </select>
+
+</mapper>
