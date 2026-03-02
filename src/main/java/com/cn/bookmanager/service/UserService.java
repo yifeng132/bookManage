@@ -2,12 +2,13 @@ package com.cn.bookmanager.service;
 
 
 
-import com.cn.bookmanager.entity.User;
+import com.cn.bookmanager.domain.dto.LoginDto;
+import com.cn.bookmanager.domain.entity.User;
 
 
 
 
 public interface UserService {
 
-    public User login(String username, String password);
+    public User login(LoginDto dto);
 }

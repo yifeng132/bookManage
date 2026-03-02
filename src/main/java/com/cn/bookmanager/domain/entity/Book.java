@@ -1,4 +1,4 @@
-package com.cn.bookmanager.entity;
+package com.cn.bookmanager.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

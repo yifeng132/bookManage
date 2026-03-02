@@ -3,10 +3,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cn.bookmanager.mapper.BookMapper">
 
-    <select id="selectAll" resultType="Book">
-        select id, book_name, author, price, create_time
-        from book
-        order by create_time desc
+    <select id="list" resultType="com.cn.bookmanager.domain.entity.Book">
+        select * from book
+        <where>
+            <if test="bookName != null and bookName != ''">
+                and book_name like concat('%', #{bookName}, '%')
+            </if>
+            <if test="author != null and author != ''">
+                and author like concat('%', #{author}, '%')
+            </if>
+        </where>
+        order by id desc
     </select>
 
     <insert id="insert">
@@ -26,7 +33,7 @@
         delete from book where id = #{id}
     </delete>
 
-    <select id="selectById" resultType="Book">
+    <select id="selectById" resultType="com.cn.bookmanager.domain.entity.Book">
         select id, book_name, author, price, create_time
         from book
         where id = #{id}

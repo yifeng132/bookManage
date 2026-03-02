@@ -3,11 +3,12 @@ package com.cn.bookmanager.controller;
 
 
 import com.cn.bookmanager.common.Result;
-import com.cn.bookmanager.entity.Book;
+import com.cn.bookmanager.domain.dto.BookQueryDto;
+import com.cn.bookmanager.domain.entity.Book;
 import com.cn.bookmanager.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/book")
@@ -17,8 +18,8 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("/list")
-    public Result<List<Book>> list() {
-        return Result.success(bookService.list());
+    public Result list(BookQueryDto dto) {
+        return Result.success(bookService.getBookList(dto));
     }
 
     @PostMapping("/add")
