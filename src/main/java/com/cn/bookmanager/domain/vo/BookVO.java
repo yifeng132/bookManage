@@ -7,9 +7,9 @@ import java.time.LocalDateTime;
 
 @Data
 public class BookVO {
-    private Long id;
+    private Integer id;
     private String bookName;
     private String author;
-    private String price;
+    private Double price;
     private LocalDateTime createTime;
 }
